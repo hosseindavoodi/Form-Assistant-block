@@ -21,7 +21,7 @@ const FormComponent: React.FC = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="flex flex-col gap-8 p-10 lg:w-1/2 md:w-1/2 sm:w-full"
+      className="flex flex-col gap-12 p-10 lg:w-1/2 md:w-1/2 sm:w-full"
     >
       <div className="flex flex-col gap-2">
         <label htmlFor="firstName">First Name*</label>
@@ -67,11 +67,19 @@ const FormComponent: React.FC = () => {
           className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
         />
       </div>
+      <div className="flex flex-col gap-2">
+        <label htmlFor="phone">what is your job?</label>
+        <input
+          type="text"
+          {...register("job")}
+          className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
+        />
+      </div>
 
       <button
         type="submit"
         disabled={!isValid}
-        className="rounded-full bg-black text-white w-[150px] p-4 disabled:bg-slate-500"
+        className="rounded-full bg-black text-white w-[150px] p-4 disabled:bg-slate-300"
       >
         Submit
       </button>
