@@ -7,13 +7,15 @@ const FormComponent: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors, isValid },
+    reset,
+    formState: { errors, isValid, touchedFields },
   } = useForm({
     resolver: zodResolver(validationSchema),
   });
 
   const onSubmit = (data: any) => {
     console.log("Form data:", data);
+    reset();
   };
 
   return (
@@ -28,7 +30,9 @@ const FormComponent: React.FC = () => {
           {...register("firstName")}
           className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
         />
-        {errors.firstName && <p>{errors.firstName.message?.toString()}</p>}
+        {touchedFields.firstName && errors.firstName && (
+          <p>{errors.firstName.message?.toString()}</p>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">
@@ -38,7 +42,9 @@ const FormComponent: React.FC = () => {
           {...register("lastName")}
           className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
         />
-        {errors.lastName && <p>{errors.lastName.message?.toString()}</p>}
+        {touchedFields.lastName && errors.lastName && (
+          <p>{errors.lastName.message?.toString()}</p>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">
@@ -48,7 +54,9 @@ const FormComponent: React.FC = () => {
           {...register("email")}
           className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
         />
-        {errors.email && <p>{errors.email.message?.toString()}</p>}
+        {touchedFields.email && errors.email && (
+          <p>{errors.email.message?.toString()}</p>
+        )}
       </div>
 
       <div className="flex flex-col gap-2">
@@ -58,7 +66,6 @@ const FormComponent: React.FC = () => {
           {...register("phone")}
           className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
         />
-        {errors.phone && <p>{errors.phone.message?.toString()}</p>}
       </div>
 
       <button
