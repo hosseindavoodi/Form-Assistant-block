@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { validationSchema } from "./validationSchema";
+import { FormAssistantBLock } from "./FormAssistantBlock";
 
 const FormComponent: React.FC = () => {
   const {
@@ -75,6 +76,7 @@ const FormComponent: React.FC = () => {
           className="border-[#dcdcdc] placeholder:text-[#929292] w-full rounded-lg border bg-white px-4 py-3 !ring-transparent"
         />
       </div>
+      <FormAssistantBLock />
 
       <button
         type="submit"
